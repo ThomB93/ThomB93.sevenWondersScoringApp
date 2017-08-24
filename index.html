@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>7 Wonders Scoring App</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!--AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+            padding-top: 54px;
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-top: 56px;
+            }
+        }
+    </style>
+
+</head>
+
+<body ng-app="ScoringModule">
+
+    <!-- Navigation -->
+    <!-- Page Content -->
+    <div ng-controller="ScoringController" class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>7 Wonders Scoring App</h2>
+                            <p class="lead">Enter number of players and check expansions played to set up score sheets for each player below.
+                                Scores and player names reset when player count is changed.
+                            </p>
+                        </div>
+                        <div class="col-sm-3">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Number of players (2-7):</label>
+                                    <input ng-change="onPlayerNumberChange()" ng-model="player.count" type="number" class="form-control" id="numberPlayers" aria-describedby=""
+                                        min="0" max="7" placeholder="Enter numer of players...">
+
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                                <input ng-model="leadersExpac.value" class="form-check-input" type="checkbox" value="">
+                                                Leaders Expansion
+                                            </label>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div id="playerNames" class="col-sm-3">
+                            <div ng-repeat="player in  players track by $index">
+                                <input id="player{{$index}}" type="text" class="form-control" placeholder="Enter name for player {{$index+1}}" ng-model="player.name"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="scoringTable" class="row">
+            <div class="col-sm-7">
+                <div ng-if="player.count > 0" class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr id="playerHead">
+                                    <th id="category">Category</th>
+                                    <th ng-repeat="player in players track by $index">{{player.name}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="military">
+                                    <td>Military</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" type="number" ng-model="player.militaryScore"></td>
+                                </tr>
+                                <tr id="gold">
+                                    <td>Gold</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" type="number" ng-model="player.goldScore"></td>
+                                </tr>
+                                <tr id="wonders">
+                                    <td>Wonders</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.wondersScore"></td>
+                                </tr>
+                                <tr id="civilian">
+                                    <td>Civilian</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.civilianScore"></td>
+                                </tr>
+                                <tr id="commercial">
+                                    <td>Commercial</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.commercialScore"></td>
+                                </tr>
+                                <tr id="guilds">
+                                    <td>Guilds</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.guildsScore"></td>
+                                </tr>
+                                <tr id="scientific">
+                                    <td>Scientific</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.scientificScore"></td>
+                                </tr>
+                                <tr ng-if="leadersExpac.value == true" id="leaders">
+                                    <td>Leaders</td>
+                                    <td ng-repeat="player in players track by $index"><input ng-change="calculateTotal(player)" min="0" type="number" ng-model="player.leadersScore"></td>
+                                </tr>
+                                <tr id="total">
+                                    <td><strong>Total Score</strong></td>
+                                    <td ng-repeat="player in players track by $index">{{player.totalScore}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <canvas id="scoringChart"></canvas>
+            </div>
+
+        </div>
+        <footer class="footer">
+            <p>&copy; 2017</p>
+        </footer>
+    </div>
+    <!--container end -->
+
+
+
+    </div>
+    <!-- /container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+
+    <!--Custom javascript -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>

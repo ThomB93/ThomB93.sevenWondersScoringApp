@@ -1,0 +1,80 @@
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-top: 10px;
+}
+img {
+    height: 200px;
+}
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+    border-top: 10px solid #98752b;
+    border-bottom: 10px solid #98752b;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-top: 2px;
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    border-top: 10px solid #98752b;
+    border-bottom: 10px solid #98752b;
+}
+button, input {
+    overflow: visible;
+    width: 40px;
+}
+
+/*COLORS*/
+/* #military {
+    background-color: #d76666;
+}
+#gold {
+    background-color: #e7cb17
+}
+#wonders {
+    background-color: #e9e2b7;
+}
+#civilian {
+    background-color: #4848E4
+}
+#commercial {
+    background-color: #fff
+}
+#guilds {
+    background-color: #fff
+}
+#scientific {
+    background-color: #fff
+}
+#leaders {
+    background-color: #fff
+}
+#total {
+    background-color: #fff
+} */
