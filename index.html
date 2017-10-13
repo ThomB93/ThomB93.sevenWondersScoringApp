@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                                <input ng-model="leadersExpac.value" class="form-check-input" type="checkbox" value="">
+                                                <input ng-change="onLeaderExpac()" ng-model="leadersExpac.value" class="form-check-input" type="checkbox" value="">
                                                 Leaders Expansion
                                             </label>
                                 </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div id="playerNames" class="col-sm-3">
                             <div ng-repeat="player in  players track by $index">
-                                <input id="player{{$index}}" type="text" class="form-control" placeholder="Enter name for player {{$index+1}}" ng-model="player.name"
+                                <input ng-change="onPlayerNameChange($index, player)" id="player{{$index}}" type="text" class="form-control" placeholder="Enter name for player {{$index+1}}" ng-model="player.name"
                                 />
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                 </div>
             </div>
             <div class="col-sm-5">
-                <canvas id="scoringChart"></canvas>
+                <canvas id="scoringChart" width="400" height="400"></canvas>
             </div>
 
         </div>
